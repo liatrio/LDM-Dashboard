@@ -1,0 +1,5 @@
+# Python library for the Slack API (includes Socket Mode)
+slack_sdk
+
+# For loading environment variables from .env file
+python-dotenv
