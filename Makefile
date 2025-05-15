@@ -7,20 +7,22 @@ db_container=ldm_redis
 db_port=6379
 
 # Start Redis with Docker
-db-up:
-	docker run --rm -d --name $(db_container) -p $(db_port):6379 redis:7
+# Docker Compose targets
+compose-up:
+	docker-compose up -d
 
-# Stop Redis
-db-down:
-	docker stop $(db_container)
+compose-down:
+	docker-compose down
 
-# Load test data into Redis
+compose-build:
+	docker-compose build
+
+compose-logs:
+	docker-compose logs -f
+
+# Load test data into Redis (must be run from dashboard container or locally with Redis running)
 db-testdata:
-	python3 redis_test_data_loader.py
+	python3 dashboard/redis_test_data_loader.py
 
-# Run Streamlit app
-streamlit-up:
-	streamlit run streamlit_app.py
-
-# Full setup (db, test data, streamlit)
-all: db-up db-testdata streamlit-up
+# Full setup (compose up, test data)
+all: compose-up db-testdata
