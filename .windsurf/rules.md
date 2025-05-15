@@ -40,3 +40,32 @@ The system will consist of three main services orchestrated by Docker Compose:
 *   Leverage `.windsurf/.to-do.md` for tracking project tasks.
 *   Work iteratively, testing each component.
 *   Ensure sensitive information (API keys, tokens) is managed via environment variables and `.env` files (added to `.gitignore`).
+
+
+## Example workflow output
+
+you should pull this from the example data
+ldm_color=green
+date=Date
+workstream_name=Workstream Name
+major_urgent_callouts=Major/Urgent Callouts
+
+
+
+This is the example data we would pull from
+Status
+:large_green_circle: Green
+Workstream Name
+meher
+Date
+10/38
+Major/Urgent Callouts
+none
+Concerns/Risks
+none
+"I need help with..."
+none
+General Update/Overview
+none
+Opportunities
+none

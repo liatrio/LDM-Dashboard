@@ -28,6 +28,8 @@ services:
       context: ./slack_bot_socket_mode
       dockerfile: Dockerfile
     container_name: ldm_slackbot
+    env_file:
+      - ./slack_bot_socket_mode/.env
     environment:
       - LDM_REDIS_HOST=redis
       - LDM_REDIS_PORT=6379

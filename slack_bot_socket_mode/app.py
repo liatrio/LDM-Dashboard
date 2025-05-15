@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from slack_sdk.web import WebClient
 from slack_sdk.socket_mode import SocketModeClient
+from slack_sdk.socket_mode.request import SocketModeRequest
 
 # Load environment variables from .env file
 load_dotenv()
@@ -17,7 +18,7 @@ client = SocketModeClient(
     web_client=WebClient(token=SLACK_BOT_TOKEN)
 )
 
-def process(client: SocketModeClient, req: SocketModeClient.request):
+def process(client: SocketModeClient, req: SocketModeRequest):
     if req.type == "events_api":
         # Acknowledge the request anyway
         response = SocketModeClient.response(req.envelope_id)
