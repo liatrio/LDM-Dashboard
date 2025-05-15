@@ -1,11 +1,11 @@
 # LDM Dashboard
 
-A simple but also pretty rad and humble dashboard for tracking and visualizing standardized workstream updates across company engagements. Built with Streamlit and PostgreSQL, this app allows you to:
+A simple but also pretty rad and humble dashboard for tracking and visualizing standardized workstream updates across company engagements. Built with Streamlit and Redis, this app allows you to:
 
 - View the current and historical status of all client engagements (Green/Yellow/Red)
 - Drill down into individual engagement trends
 - Visualize engagement status breakdowns with a sunburst chart
-- Store and retrieve updates using a PostgreSQL database (run via Docker)
+- Store and retrieve updates using a Redis database (run via Docker)
 
 ## Features
 - **Overall Status Trends:** See all engagement statuses over time and a sunburst chart breakdown.
@@ -17,7 +17,7 @@ A simple but also pretty rad and humble dashboard for tracking and visualizing s
 ## Getting Started
 
 ### Prerequisites
-- [Docker](https://www.docker.com/) (for running PostgreSQL)
+- [Docker](https://www.docker.com/) (for running Redis)
 - [Python 3.8+](https://www.python.org/)
 - Recommended: Use a Python virtual environment (`python3 -m venv venv`)
 
@@ -29,14 +29,13 @@ pip install -r requirements.txt
 ### Database & App Setup (with Makefile)
 All commands are run from the project root.
 
-#### Start the database (in Docker):
+#### Start the Redis database (in Docker):
 ```sh
 make db-up
 ```
 
-#### Wait for DB, initialize schema, and load test data:
+#### Load test data into Redis:
 ```sh
-make db-init
 make db-testdata
 ```
 
@@ -45,7 +44,7 @@ make db-testdata
 make all
 ```
 
-#### Stop the database:
+#### Stop the Redis database:
 ```sh
 make db-down
 ```
@@ -59,9 +58,8 @@ make streamlit-up
 
 ## File Overview
 - `streamlit_app.py` — Main dashboard app
-- `db_module.py` — Database connection and data extraction
-- `db_schema.sql` — Database schema
-- `db_test_data.sql` — Test data for demo/trends
+- `db_module.py` — Redis connection and data extraction
+- `redis_test_data_loader.py` — Loads test data into Redis
 - `Makefile` — Easy commands for setup and running
 
 ---
